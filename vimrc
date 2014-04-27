@@ -34,7 +34,6 @@ Plugin 'tpope/vim-repeat'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
 " External programs
 cnoremap lsf !ls
 cnoremap gft !gofmt -w %:p
@@ -113,3 +112,5 @@ set nowritebackup
 set autowriteall
 set autoread
 au FocusLost * :wa " Auto Save when losing focus
+set backspace=indent,eol,start
+
