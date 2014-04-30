@@ -30,6 +30,8 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'kshenoy/vim-origami'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-heroku'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
