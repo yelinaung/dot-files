@@ -8,9 +8,9 @@ Installation
 ```bash
 $ git clone https://github.com/yelinaung/dot-files.git
 $ cd dot-files
+$ git clone https://github.com/gmarik/Vundle.vim.git bundle/Vundle.vim
 $ sh install.sh
 ```
-
 
 Install Plugins:
 ---------------
