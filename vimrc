@@ -32,6 +32,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-heroku'
+Plugin 'tpope/vim-surround'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -64,16 +65,6 @@ imap jj <Esc>
 
 " Special case for Go files
 autocmd FileType go set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
-
-" No Arrow Keys
-nnoremap <up>    <nop>
-nnoremap <down>  <nop>
-nnoremap <left>  <nop>
-nnoremap <right> <nop>
-inoremap <up>    <nop>
-inoremap <down>  <nop>
-inoremap <left>  <nop>
-inoremap <right> <nop>
 
 filetype on
 filetype plugin on
