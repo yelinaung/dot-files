@@ -57,7 +57,7 @@ set scrolloff=3
 set mouse=a        " Enable mouse support in console
 set gfn=Monaco\ 12
 set guifont=Monaco\ 12
-colorscheme Tomorrow-Night-Eighties
+colorscheme Tomorrow-Night
 
 " kj - Get out of Insert mode
 imap kj <Esc>
