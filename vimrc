@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set ff=unix
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -12,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Vundle
 Plugin 'fatih/vim-go'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'scrooloose/syntastic'
@@ -38,13 +41,6 @@ Plugin 'tpope/vim-surround'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" External programs
-cnoremap lsf !ls
-cnoremap gft !gofmt -w %:p
-cnoremap grn !go run %:p
-
-" gofmt on save
-au FileType go au BufWritePre <buffer> Fmt
 
 " Treat rabl as ruby
 au BufRead,BufNewFile *.rabl setf ruby
@@ -58,14 +54,21 @@ set scrolloff=3
 set mouse=a        " Enable mouse support in console
 set gfn=Monaco\ 12
 set guifont=Monaco\ 12
-colorscheme Tomorrow-Night
+colorscheme Tomorrow-Night-Bright
 
 " kj - Get out of Insert mode
 imap kj <Esc>
 imap jj <Esc>
 
 " Special case for Go files
-autocmd FileType go set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
+" autocmd FileType go set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
+" gofmt on save
+" autocmd BufWritePre *.go Fmt
+
+" External programs
+cnoremap lsf !ls
+cnoremap gft !gofmt -w %:p
+cnoremap grn !go run %:p
 
 filetype on
 filetype plugin on
