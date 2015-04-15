@@ -45,7 +45,7 @@ Plugin 'zah/nimrod.vim'
 " `zR` - open all
 " `zM` - close all
 
-"folding settings
+" folding settings
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
