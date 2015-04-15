@@ -37,6 +37,19 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-heroku'
 Plugin 'tpope/vim-surround'
+Plugin 'zah/nimrod.vim'
+
+" `za` - toggles
+" `zc` - closes
+" `zo` - opens
+" `zR` - open all
+" `zM` - close all
+
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -54,7 +67,7 @@ set scrolloff=3
 set mouse=a        " Enable mouse support in console
 set gfn=Monaco\ 12
 set guifont=Monaco\ 12
-colorscheme Tomorrow-Night-Bright
+colorscheme Tomorrow-Night
 
 " kj - Get out of Insert mode
 imap kj <Esc>
