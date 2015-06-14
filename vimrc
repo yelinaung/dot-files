@@ -9,10 +9,16 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/.vim/bundle"')
 
+let g:airline_powerline_fonts = 1
+
+set guifont=Inconsolata\ LGC:h14
+
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 " Vundle
+Plugin 'bling/vim-airline'
+Plugin 'rust-lang/rust.vim'
 Plugin 'fatih/vim-go'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'mattn/webapi-vim'
@@ -65,8 +71,6 @@ set ls=2
 set scrolloff=3
 
 set mouse=a        " Enable mouse support in console
-set gfn=Monaco\ 12
-set guifont=Monaco\ 12
 colorscheme Tomorrow-Night
 
 " kj - Get out of Insert mode
@@ -129,3 +133,27 @@ if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
 endif
+
+let mapleader = "\<Space>"
+
+" Space + W for file write
+nnoremap <Leader>w :w<CR>
+
+" Copy & paste to system clipboard with <Space>p and <Space>y:
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" paste multiple lines multiple times with simple ppppp
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+" Go to line number x with x<Enter> to go to line x
+nnoremap <CR> G
+nnoremap <BS> gg
+
+map q: :q
