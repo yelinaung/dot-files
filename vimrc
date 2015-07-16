@@ -43,6 +43,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-heroku'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
 Plugin 'zah/nimrod.vim'
 
 " `za` - toggles
