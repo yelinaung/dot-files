@@ -9,15 +9,13 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/.vim/bundle"')
 
-let g:airline_powerline_fonts = 1
-
 set guifont=Inconsolata\ LGC:h14
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
 " Vundle
-Plugin 'bling/vim-airline'
+Plugin 'itchyny/lightline.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'fatih/vim-go'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -44,6 +42,7 @@ Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-heroku'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
+Plugin 'bling/vim-airline'
 Plugin 'zah/nimrod.vim'
 
 " `za` - toggles
@@ -61,6 +60,8 @@ set foldlevel=1         "this is just what i use
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+let g:airline_powerline_fonts=1
+let g:airline_theme='luna'
 
 " Treat rabl as ruby
 au BufRead,BufNewFile *.rabl setf ruby
@@ -158,3 +159,5 @@ nnoremap <CR> G
 nnoremap <BS> gg
 
 map q: :q
+
+
