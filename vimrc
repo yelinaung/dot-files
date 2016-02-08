@@ -9,7 +9,8 @@ call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 " call vundle#begin('~/.vim/bundle"')
 
-set guifont=Inconsolata\ LGC:h14
+" set guifont=Inconsolata\ LGC:h14
+set guifont=Fira\ Code\ Light:h16
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -42,7 +43,8 @@ Plugin 'tpope/vim-rake'
 Plugin 'tpope/vim-heroku'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'zah/nimrod.vim'
 
 " `za` - toggles
@@ -160,4 +162,6 @@ nnoremap <BS> gg
 
 map q: :q
 
+" Git
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
