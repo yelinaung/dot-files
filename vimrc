@@ -124,6 +124,9 @@ set softtabstop=2 " Tab conversion to number of spaces
 set shiftwidth=2  " Auto-indent amount
 set shiftround    " When at 3 spaces, when I hit > .. go to 4, not 5
 
+set cursorline
+set cursorcolumn
+
 set noswapfile
 set nobackup
 set nowritebackup
