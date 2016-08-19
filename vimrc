@@ -10,7 +10,14 @@ call vundle#begin()
 " call vundle#begin('~/.vim/bundle"')
 
 " set guifont=Inconsolata\ LGC:h14
-set guifont=Fira\ Code\ Light:h16
+" - font type and size setting.
+if has('win32')
+  set guifont=Consolas:h12    " Win32.
+elseif has('gui_macvim')
+  set guifont=Fira\ Code:h14  " OSX.
+else
+  set guifont=Fira\ Mono:h16
+endif
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -22,7 +29,7 @@ Plugin 'fatih/vim-go'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'godlygeek/tabular'
@@ -46,6 +53,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'zah/nimrod.vim'
+Plugin 'wakatime/vim-wakatime'
 
 " `za` - toggles
 " `zc` - closes
