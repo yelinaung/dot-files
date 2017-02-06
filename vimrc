@@ -3,11 +3,6 @@ filetype off                  " required
 
 set ff=unix
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/.vim/bundle"')
 
 " set guifont=Inconsolata\ LGC:h14
 " - font type and size setting.
@@ -19,41 +14,26 @@ else
   set guifont=Fira\ Mono:h16
 endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
 
-" Vundle
-Plugin 'itchyny/lightline.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'fatih/vim-go'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
+"
+" Make sure you use single quotes
+"
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+Plug 'scrooloose/nerdtree'
+" Plugin 'itchyny/lightline.vim'
+" Plugin 'rust-lang/rust.vim'
+Plug 'fatih/vim-go'
+Plug 'ctrlpvim/ctrlp.vim'
 " Plugin 'scrooloose/syntastic'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'godlygeek/tabular'
-Plugin 'derekwyatt/vim-scala'
-Plugin 'scrooloose/nerdtree'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'slim-template/vim-slim.git'
-Plugin 'chriskempson/tomorrow-theme'
-Plugin 'Raimondi/delimitMate'
-Plugin 'kshenoy/vim-origami'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-rake'
-Plugin 'tpope/vim-heroku'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-commentary'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'zah/nimrod.vim'
-Plugin 'wakatime/vim-wakatime'
+" Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'chriskempson/tomorrow-theme'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+call plug#end()
 
 " `za` - toggles
 " `zc` - closes
@@ -67,7 +47,6 @@ set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 let g:airline_powerline_fonts=1
@@ -88,16 +67,12 @@ colorscheme Tomorrow-Night
 " kj - Get out of Insert mode
 imap kj <Esc>
 imap jj <Esc>
+imap ;; <Esc>
 
 " Special case for Go files
 " autocmd FileType go set tabstop=4|set shiftwidth=4|set expandtab|set softtabstop=4
 " gofmt on save
 " autocmd BufWritePre *.go Fmt
-
-" External programs
-cnoremap lsf !ls
-cnoremap gft !gofmt -w %:p
-cnoremap grn !go run %:p
 
 filetype on
 filetype plugin on
