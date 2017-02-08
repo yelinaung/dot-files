@@ -1,8 +1,7 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 set ff=unix
-
+set encoding=utf-8
 
 " set guifont=Inconsolata\ LGC:h14
 " - font type and size setting.
@@ -28,6 +27,10 @@ Plug 'scrooloose/nerdtree'
 " Plugin 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'w0rp/ale'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'python-mode/python-mode'
 " Plugin 'scrooloose/syntastic'
 " Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'chriskempson/tomorrow-theme'
@@ -147,6 +150,12 @@ nnoremap <CR> G
 nnoremap <BS> gg
 
 map q: :q
+
+let g:NERDTreeDirArrows=0
+let NERDTreeShowHidden=1
+
+set shortmess=a
+set cmdheight=2
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
