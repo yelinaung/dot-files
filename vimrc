@@ -31,8 +31,8 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'w0rp/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'python-mode/python-mode'
+Plug 'terryma/vim-multiple-cursors'
 " Plugin 'scrooloose/syntastic'
-" Plugin 'terryma/vim-multiple-cursors'
 " Plugin 'chriskempson/tomorrow-theme'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
@@ -103,11 +103,11 @@ set nolazyredraw " Don't redraw while executing macros
 set magic        " Set magic on, for regular expressions
 set showmatch    " Show matching bracets when text indic
 
-set tabstop=2
-set shiftwidth=1
+" set tabstop=2
+" set shiftwidth=1
 set expandtab     " Convert Tabs into Spaces
-set softtabstop=2 " Tab conversion to number of spaces
-set shiftwidth=2  " Auto-indent amount
+" set softtabstop=2 " Tab conversion to number of spaces
+" set shiftwidth=2  " Auto-indent amount
 set shiftround    " When at 3 spaces, when I hit > .. go to 4, not 5
 
 set cursorline
