@@ -1,1 +1,1 @@
-/home/yelinaung/work/tools/dot-files/vimrc
+/home/yelinaung/.vimrc

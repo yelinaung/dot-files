@@ -26,9 +26,9 @@ Plug 'scrooloose/nerdtree'
 " Plugin 'itchyny/lightline.vim'
 " Plugin 'rust-lang/rust.vim'
 Plug 'fatih/vim-go'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
-Plug 'w0rp/ale'
+Plug 'w0rp/ale' " lint engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'python-mode/python-mode'
 Plug 'terryma/vim-multiple-cursors'
@@ -160,3 +160,4 @@ set cmdheight=2
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+call deoplete#enable()
