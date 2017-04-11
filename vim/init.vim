@@ -1,1 +1,1 @@
-/home/yelinaung/.vimrc
+/Users/yelinaung/.vimrc
