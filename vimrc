@@ -161,5 +161,8 @@ set cmdheight=2
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
 set lazyredraw
+set completeopt-=preview
+set clipboard+=unnamedplus
 
 call deoplete#enable()
+
