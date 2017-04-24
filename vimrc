@@ -160,4 +160,6 @@ set cmdheight=2
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
 
+set lazyredraw
+
 call deoplete#enable()
