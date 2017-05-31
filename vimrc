@@ -32,8 +32,10 @@ Plug 'w0rp/ale' " lint engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'python-mode/python-mode'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plugin 'scrooloose/syntastic'
-" Plugin 'chriskempson/tomorrow-theme'
+Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plug 'udalov/kotlin-vim'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -163,6 +165,11 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 set lazyredraw
 set completeopt-=preview
 set clipboard+=unnamedplus
+
+" disable pylint
+let pymode_lint_ignore=0
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc     " MacOSX/Linux
 
 call deoplete#enable()
 
