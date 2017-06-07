@@ -29,16 +29,30 @@ Plug 'fatih/vim-go'
 Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
 Plug 'w0rp/ale' " lint engine
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'python-mode/python-mode'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'python-mode/python-mode'
+Plug 'vim-python/python-syntax'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plugin 'scrooloose/syntastic'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'udalov/kotlin-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'mindriot101/vim-yapf'
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
+
+let g:python_highlight_all = 1
+
+" need to test yapf
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+" autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 " `za` - toggles
 " `zc` - closes
@@ -47,10 +61,10 @@ call plug#end()
 " `zM` - close all
 
 " folding settings
-set foldmethod=indent   "fold based on indent
-set foldnestmax=10      "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
+" set foldmethod=indent   "fold based on indent
+" set foldnestmax=10      "deepest fold is 10 levels
+" set nofoldenable        "dont fold by default
+" set foldlevel=1         "this is just what i use
 
 filetype plugin indent on    " required
 
@@ -151,13 +165,14 @@ nnoremap <silent> p p`]
 nnoremap <CR> G
 nnoremap <BS> gg
 
+map <q> <Nop>
 map q: :q
 
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
 
 set shortmess=a
-set cmdheight=2
+" set cmdheight=2
 
 " Git
 autocmd Filetype gitcommit setlocal spell textwidth=72
@@ -168,8 +183,9 @@ set clipboard+=unnamedplus
 
 " disable pylint
 let pymode_lint_ignore=0
+let g:pymode_rope_completion = 0
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc     " MacOSX/Linux
 
-call deoplete#enable()
+" call deoplete#enable()
 
