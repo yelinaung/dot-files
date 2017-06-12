@@ -44,6 +44,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'mindriot101/vim-yapf'
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
+Plug 'fisadev/vim-isort'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -52,7 +53,7 @@ let g:python_highlight_all = 1
 
 " need to test yapf
 autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
-" autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
+autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 " `za` - toggles
 " `zc` - closes
@@ -188,4 +189,11 @@ let g:pymode_rope_completion = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc     " MacOSX/Linux
 
 " call deoplete#enable()
+
+map <Leader>p :call InsertPDB()<CR>
+
+function! InsertPDB()
+  let trace = expand("import pdb; pdb.set_trace()")
+  execute "normal o".trace
+endfunction
 
