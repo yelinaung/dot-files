@@ -197,3 +197,5 @@ function! InsertPDB()
   execute "normal o".trace
 endfunction
 
+map <C-x> :w<CR>:!python %<CR>
+
