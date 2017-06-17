@@ -45,6 +45,10 @@ Plug 'mindriot101/vim-yapf'
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
 Plug 'fisadev/vim-isort'
+Plug 'easymotion/vim-easymotion'
+Plug 'blueyed/vim-diminactive'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdcommenter'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -199,3 +203,11 @@ endfunction
 
 map <C-x> :w<CR>:!python %<CR>
 
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+"case insensitive
+let g:EasyMotion_smartcase = 1
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" nmap s <Plug>(easymotion-overwin-f)
+nmap <Leader>' <Plug>(easymotion-s2)
