@@ -201,6 +201,8 @@ function! InsertPDB()
   execute "normal o".trace
 endfunction
 
+map <C-x> :w<CR>:!python %<CR>
+
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 "case insensitive
