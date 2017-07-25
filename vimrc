@@ -49,6 +49,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
+Plug 'maksimr/vim-jsbeautify'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -56,8 +57,8 @@ call plug#end()
 let g:python_highlight_all = 1
 
 " need to test yapf
-autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
-autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
+"autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+"autocmd FileType python nnoremap <LocalLeader>i :!isort %<CR><CR>
 
 " `za` - toggles
 " `zc` - closes
@@ -208,6 +209,29 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 "case insensitive
 let g:EasyMotion_smartcase = 1
 
+" instead of ctrl-w then j, it’s just ctrl-j:
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Open new split panes to right and bottom, which feels more natural than Vim’s default:
+set splitbelow
+set splitright
+
+augroup HiglightTODO
+    autocmd!
+    autocmd WinEnter,VimEnter * :silent! call matchadd('Todo', 'TODO', 'FIXME', -1)
+augroup END
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+
+let NERDTreeIgnore = ['\.pyc$']
+
+
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " nmap s <Plug>(easymotion-overwin-f)
 nmap <Leader>' <Plug>(easymotion-s2)
+
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
