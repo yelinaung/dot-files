@@ -113,6 +113,7 @@ set ai           " Auto indent
 set si           " Smart indet
 set wrap         " Wrap lines
 syntax on
+set relativenumber
 
 " No sound on errors
 set noerrorbells
