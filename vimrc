@@ -50,6 +50,7 @@ Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'maksimr/vim-jsbeautify'
+Plug 'Yggdroot/indentLine'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -233,5 +234,10 @@ let NERDTreeIgnore = ['\.pyc$']
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " nmap s <Plug>(easymotion-overwin-f)
 nmap <Leader>' <Plug>(easymotion-s2)
+
+" https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
