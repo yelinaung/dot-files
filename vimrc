@@ -51,6 +51,7 @@ Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'Yggdroot/indentLine'
+" Plug 'pangloss/vim-javascript'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
@@ -127,11 +128,11 @@ set nolazyredraw " Don't redraw while executing macros
 set magic        " Set magic on, for regular expressions
 set showmatch    " Show matching bracets when text indic
 
-" set tabstop=2
-" set shiftwidth=1
+set tabstop=2
+ set shiftwidth=1
 set expandtab     " Convert Tabs into Spaces
-" set softtabstop=2 " Tab conversion to number of spaces
-" set shiftwidth=2  " Auto-indent amount
+set softtabstop=2 " Tab conversion to number of spaces
+set shiftwidth=2  " Auto-indent amount
 set shiftround    " When at 3 spaces, when I hit > .. go to 4, not 5
 
 set cursorline
@@ -227,7 +228,8 @@ augroup HiglightTODO
 augroup END
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType jsx setlocal ts=4 sts=4 sw=4 expandtab
+autocmd FileType js setlocal ts=4 sts=4 sw=4 expandtab
 
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -237,7 +239,17 @@ let NERDTreeIgnore = ['\.pyc$']
 nmap <Leader>' <Plug>(easymotion-s2)
 
 " https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
+" The Silver Searcher
+" https://robots.thoughtbot.com/faster-grepping-in-vim<Paste>
 if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
   let g:ackprg = 'ag --vimgrep'
 endif
 
