@@ -239,6 +239,9 @@ let NERDTreeIgnore = ['\.pyc$']
 " nmap s <Plug>(easymotion-overwin-f)
 nmap <Leader>' <Plug>(easymotion-s2)
 
+" map Leader (space) + h for no highlight search
+nmap <Leader>h :noh<CR>
+
 " https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
 " The Silver Searcher
 " https://robots.thoughtbot.com/faster-grepping-in-vim<Paste>

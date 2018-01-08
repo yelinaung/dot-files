@@ -8,10 +8,10 @@
 [core]
         pager = less -FRSX
         whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-	editor = nvim
+        editor = nvim
         autocrlf = false
         safecrlf = false
-        excludesfile = /Users/yelinaung/.gitignore_global
+        excludesfile = /home/yelin/.gitignore_global
 [advice]
         statusHints = false
 [web]
