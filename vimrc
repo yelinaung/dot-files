@@ -25,31 +25,31 @@ Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 " Plugin 'itchyny/lightline.vim'
 " Plugin 'rust-lang/rust.vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
 Plug 'w0rp/ale' " lint engine
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'python-mode/python-mode'
-Plug 'vim-python/python-syntax'
+Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plugin 'scrooloose/syntastic'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plug 'udalov/kotlin-vim'
+Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
-Plug 'davidhalter/jedi-vim'
-Plug 'mindriot101/vim-yapf'
+Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'mindriot101/vim-yapf', {'for': 'python'}
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
-Plug 'fisadev/vim-isort'
+Plug 'fisadev/vim-isort', {'for': 'python'}
 Plug 'easymotion/vim-easymotion'
 Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-Plug 'maksimr/vim-jsbeautify'
+Plug 'maksimr/vim-jsbeautify', {'for': 'javascript'}
 Plug 'Yggdroot/indentLine'
 " Plug 'pangloss/vim-javascript'
 " Plugin 'vim-airline/vim-airline'
@@ -124,7 +124,6 @@ set ignorecase   " Ignore case when searching
 set smartcase
 set hlsearch     " Highlight search things
 set incsearch    " Make search act like search in modern browsers
-set nolazyredraw " Don't redraw while executing macros
 set magic        " Set magic on, for regular expressions
 set showmatch    " Show matching bracets when text indic
 
@@ -159,7 +158,7 @@ let mapleader = "\<Space>"
 nnoremap <Leader>w :w<CR>
 
 " Copy & paste to system clipboard with <Space>p and <Space>y:
-vmap <Leader>y "+y
+" vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
