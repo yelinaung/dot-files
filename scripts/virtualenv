@@ -1,0 +1,86 @@
+#!/usr/env bash
+
+_load_pyenv() {
+    if [ -z "$1" ]; then
+        if [ -e "venv" ]; then
+            DIR='venv'
+        elif [ -e "venv3" ]; then
+            DIR='venv3'
+        else
+            echo "No virtualenv"
+            return
+        fi
+    else
+        DIR=$1
+    fi
+
+    source $DIR/bin/activate
+}
+
+_pyenv () {
+    ENV=$1
+
+    if [ -z "$ENV" ]; then
+        ENV='3'
+    elif [ "$ENV" = "3" ] || [ "$ENV" = "2" ]; then
+        ENV=$ENV
+    else
+        echo "Unknown Environment (valid values are '2' or '3')"
+        return 1
+    fi
+
+    if [ "$ENV" = "2" ]; then
+        DIR="venv"
+        ODIR="venv3"
+        PYRUNTIME="python"
+    else
+        DIR="venv3"
+        ODIR="venv"
+        PYRUNTIME="python3"
+    fi
+
+    if [ ! -e "$DIR" ]; then
+        if [ -e "$ODIR" -a -z "$1" ]; then
+            DIR=$ODIR
+        else
+            virtualenv -p $PYRUNTIME $DIR
+        fi
+    fi
+
+    _load_pyenv $DIR
+}
+_pymenv () {
+    ENV=$1
+    
+    if [ -z "$ENV" ]; then
+        ENV='3'
+    elif [ "$ENV" = "3" -o "$ENV" = "2" ]; then
+        ENV=$ENV
+    else
+        echo "Unknown Environment (valid values are '2' or '3')"
+        return 1
+    fi
+
+    if [ "$ENV" = "2" ]; then
+        DIR="venv"
+        ODIR="venv3"
+        PYRUNTIME="python"
+    else
+        DIR="venv3"
+        ODIR="venv"
+        PYRUNTIME="python3"
+    fi
+    if [ ! -e "$DIR" ]; then
+        if [ -e "$ODIR" -a -z "$1" ]; then
+            DIR=$ODIR
+        else
+            $PYRUNTIME -m venv $DIR
+        fi
+    fi
+
+    _load_pyenv $DIR
+}
+
+alias pyenv='_pyenv'
+alias pymenv='_pymenv'
+# export PYTHONSTARTUP="$HOME/.pythonrc"

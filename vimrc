@@ -50,7 +50,9 @@ Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
 Plug 'maksimr/vim-jsbeautify', {'for': 'javascript'}
+Plug 'digitaltoad/vim-pug',
 Plug 'Yggdroot/indentLine'
+Plug 'digitalrounin/vim-yaml-folds'
 " Plug 'pangloss/vim-javascript'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'

@@ -25,6 +25,7 @@
         summary = true
 [alias]
         hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+        reset-one = reset HEAD~1
 [diff]
         tool = icdiff
 [difftool]
