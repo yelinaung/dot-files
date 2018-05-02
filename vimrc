@@ -207,6 +207,8 @@ function! InsertPDB()
   execute "normal o".trace
 endfunction
 
+let @t = 'cwraise tornado.gen.Return(lxA)^'
+
 map <C-x> :w<CR>:!python %<CR>
 
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
@@ -240,6 +242,16 @@ let NERDTreeIgnore = ['\.pyc$']
 " nmap s <Plug>(easymotion-overwin-f)
 nmap <Leader>' <Plug>(easymotion-s2)
 
+" Gif config
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev) 
+
 " map Leader (space) + h for no highlight search
 nmap <Leader>h :noh<CR>
 
@@ -259,3 +271,17 @@ if executable('ag')
 endif
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+let g:jedi#completions_enabled = 0
