@@ -13,6 +13,8 @@ else
   set guifont=Fira\ Mono:h16
 endif
 
+set showtabline=2
+set title
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
