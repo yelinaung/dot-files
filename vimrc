@@ -10,7 +10,8 @@ if has('win32')
 elseif has('gui_macvim')
   set guifont=Fira\ Code:h14  " OSX.
 else
-  set guifont=Fira\ Mono:h16
+  set guifont=Fira\ Code\ 12
+  "set guifont=Fira\ Mono:h16
 endif
 
 set showtabline=2
@@ -44,6 +45,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'mindriot101/vim-yapf', {'for': 'python'}
+Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
 Plug 'fisadev/vim-isort', {'for': 'python'}
@@ -55,6 +57,9 @@ Plug 'maksimr/vim-jsbeautify', {'for': 'javascript'}
 Plug 'digitaltoad/vim-pug',
 Plug 'Yggdroot/indentLine'
 Plug 'digitalrounin/vim-yaml-folds'
+Plug 'kevinw/pyflakes-vim'
+" Plug 'ambv/black'
+
 " Plug 'pangloss/vim-javascript'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
@@ -248,11 +253,16 @@ nmap <Leader>' <Plug>(easymotion-s2)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" Without these mappings, `n` & `N` works fine. (These mappings just provide
-" different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev) 
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " map Leader (space) + h for no highlight search
 nmap <Leader>h :noh<CR>
@@ -285,5 +295,8 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
+
+" toggle between :paste and :nopaste
+set pastetoggle=<F3>
 
 let g:jedi#completions_enabled = 0
