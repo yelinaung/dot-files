@@ -27,7 +27,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 " Plugin 'itchyny/lightline.vim'
 " Plugin 'rust-lang/rust.vim'
-Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
 Plug 'w0rp/ale' " lint engine
@@ -37,24 +37,32 @@ Plug 'w0rp/ale' " lint engine
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 " Plugin 'scrooloose/syntastic'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
+" Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
-Plug 'davidhalter/jedi-vim', {'for': 'python'}
+Plug 'davidhalter/jedi-vim',
 Plug 'mindriot101/vim-yapf', {'for': 'python'}
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
-Plug 'fisadev/vim-isort', {'for': 'python'}
+" Plug 'fisadev/vim-isort', {'for': 'python'}
 Plug 'easymotion/vim-easymotion'
 Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-Plug 'maksimr/vim-jsbeautify', {'for': 'javascript'}
+" Plug 'maksimr/vim-jsbeautify', {'for': 'javascript'}
 Plug 'digitaltoad/vim-pug',
 Plug 'Yggdroot/indentLine'
 Plug 'digitalrounin/vim-yaml-folds'
+Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-grepper'
+Plug 'jremmen/vim-ripgrep'
+Plug 'pelodelfuego/vim-swoop'
+Plug 'vim-syntastic/syntastic'
+Plug 'maralla/completor.vim'
+"Plug 'wakatime/vim-wakatime'
 " Plug 'pangloss/vim-javascript'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
@@ -108,7 +116,7 @@ imap ;; <Esc>
 filetype on
 filetype plugin on
 filetype indent on
-syntax enable
+" syntax enable
 set grepprg=grep\ -nH\ $*
 
 set showcmd      " Shows what you are typing as a command
@@ -119,7 +127,7 @@ set ai           " Auto indent
 set si           " Smart indet
 set wrap         " Wrap lines
 syntax on
-set relativenumber
+" set relativenumber
 
 " No sound on errors
 set noerrorbells
@@ -175,7 +183,7 @@ vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
 " Go to line number x with x<Enter> to go to line x
-nnoremap <CR> G
+"nnoremap <CR> G
 nnoremap <BS> gg
 
 map <q> <Nop>
@@ -239,7 +247,6 @@ autocmd FileType js setlocal ts=4 sts=4 sw=4 expandtab
 
 let NERDTreeIgnore = ['\.pyc$']
 
-
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " nmap s <Plug>(easymotion-overwin-f)
 nmap <Leader>' <Plug>(easymotion-s2)
@@ -248,11 +255,16 @@ nmap <Leader>' <Plug>(easymotion-s2)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 
-" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
-" Without these mappings, `n` & `N` works fine. (These mappings just provide
-" different highlight method and have some other features )
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev) 
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
 
 " map Leader (space) + h for no highlight search
 nmap <Leader>h :noh<CR>
@@ -262,15 +274,25 @@ nmap <Leader>h :noh<CR>
 " https://robots.thoughtbot.com/faster-grepping-in-vim<Paste>
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-  let g:ackprg = 'ag --vimgrep'
+   let g:ctrlp_use_caching = 0
+   let g:ackprg = 'ag --vimgrep'
 endif
+
+" use ctrl p with rg aka ripgrep
+"if executable('rg')
+  "let g:ctrlp_user_command = 'rg --files %s'
+  "let g:ctrlp_use_caching = 0
+  "let g:ctrlp_working_path_mode = 'ra'
+  "let g:ctrlp_switch_buffer = 'et'
+
+  "let g:ackprg = 'rg --vimgrep --no-heading'
+"endif
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
@@ -286,4 +308,11 @@ noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 
+" toggle between :paste and :nopaste
+set pastetoggle=<F3>
+
+nmap <Leader>ml :call SwoopMulti()<CR>
+vmap <Leader>ml :call SwoopMultiSelection()<CR>
+
 let g:jedi#completions_enabled = 0
+let $JS_CMD='node'
