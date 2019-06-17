@@ -10,7 +10,8 @@ if has('win32')
 elseif has('gui_macvim')
   set guifont=Fira\ Code:h14  " OSX.
 else
-  set guifont=Fira\ Mono:h16
+  set guifont=Fira\ Code\ 12
+  "set guifont=Fira\ Mono:h16
 endif
 
 set showtabline=2
@@ -45,6 +46,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'davidhalter/jedi-vim',
 Plug 'mindriot101/vim-yapf', {'for': 'python'}
+Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
 " Plug 'fisadev/vim-isort', {'for': 'python'}
@@ -63,6 +65,9 @@ Plug 'pelodelfuego/vim-swoop'
 Plug 'vim-syntastic/syntastic'
 Plug 'maralla/completor.vim'
 "Plug 'wakatime/vim-wakatime'
+Plug 'kevinw/pyflakes-vim'
+" Plug 'ambv/black'
+
 " Plug 'pangloss/vim-javascript'
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
