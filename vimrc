@@ -66,6 +66,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'maralla/completor.vim'
 "Plug 'wakatime/vim-wakatime'
 Plug 'kevinw/pyflakes-vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+
 " Plug 'ambv/black'
 
 " Plug 'pangloss/vim-javascript'
