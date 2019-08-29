@@ -24,7 +24,6 @@ call plug#begin('~/.vim/plugged')
 "
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
-
 Plug 'scrooloose/nerdtree'
 " Plugin 'itchyny/lightline.vim'
 " Plugin 'rust-lang/rust.vim'
@@ -39,7 +38,7 @@ Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 " Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'tpope/vim-fugitive'
@@ -68,6 +67,8 @@ Plug 'maralla/completor.vim'
 Plug 'kevinw/pyflakes-vim'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 
+Plug 'wakatime/vim-wakatime'
+Plug 'christoomey/vim-tmux-navigator'
 " Plug 'ambv/black'
 
 " Plug 'pangloss/vim-javascript'
@@ -279,27 +280,27 @@ nmap <Leader>h :noh<CR>
 " https://github.com/mileszs/ack.vim#can-i-use-ag-the-silver-searcher-with-this
 " The Silver Searcher
 " https://robots.thoughtbot.com/faster-grepping-in-vim<Paste>
-if executable('ag')
-  " Use ag over grep
-   set grepprg=ag\ --nogroup\ --nocolor
+"if executable('ag')
+  "" Use ag over grep
+   "set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  "" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+   "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-   let g:ctrlp_use_caching = 0
-   let g:ackprg = 'ag --vimgrep'
-endif
+  "" ag is fast enough that CtrlP doesn't need to cache
+   "let g:ctrlp_use_caching = 0
+   "let g:ackprg = 'ag --vimgrep'
+"endif
 
 " use ctrl p with rg aka ripgrep
-"if executable('rg')
-  "let g:ctrlp_user_command = 'rg --files %s'
-  "let g:ctrlp_use_caching = 0
-  "let g:ctrlp_working_path_mode = 'ra'
-  "let g:ctrlp_switch_buffer = 'et'
+if executable('rg')
+  let g:ctrlp_user_command = 'rg --files %s'
+  let g:ctrlp_use_caching = 0
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_switch_buffer = 'et'
 
-  "let g:ackprg = 'rg --vimgrep --no-heading'
-"endif
+  let g:ackprg = 'rg --vimgrep --no-heading'
+endif
 
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 
