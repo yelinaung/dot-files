@@ -30,7 +30,8 @@ Plug 'scrooloose/nerdtree'
 " Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
-Plug 'w0rp/ale' " lint engine
+"Plug 'w0rp/ale' " lint engine
+Plug 'dense-analysis/ale'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'python-mode/python-mode'
@@ -62,13 +63,16 @@ Plug 'mhinz/vim-grepper'
 Plug 'jremmen/vim-ripgrep'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'vim-syntastic/syntastic'
-Plug 'maralla/completor.vim'
-"Plug 'wakatime/vim-wakatime'
-Plug 'kevinw/pyflakes-vim'
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-
 Plug 'wakatime/vim-wakatime'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'flazz/vim-colorschemes'
+
+" Use release branch
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Or latest tag
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+" Or build from source code by use yarn: https://yarnpkg.com
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'ambv/black'
 
 " Plug 'pangloss/vim-javascript'
@@ -109,7 +113,9 @@ set ls=2
 set scrolloff=3
 
 set mouse=a        " Enable mouse support in console
-colorscheme Tomorrow-Night
+colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
+let g:gruvbox_invert_selection=0
 
 " kj - Get out of Insert mode
 imap kj <Esc>
@@ -199,6 +205,7 @@ map q: :q
 
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
+nmap <Leader>n :NERDTreeToggle<CR>
 
 set shortmess=a
 " set cmdheight=2
@@ -324,3 +331,11 @@ vmap <Leader>ml :call SwoopMultiSelection()<CR>
 
 let g:jedi#completions_enabled = 0
 let $JS_CMD='node'
+
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE) so that color schemes
+    " work properly when Vim is used inside tmux and GNU screen.
+    set t_ut=
+endif
+
+nmap <leader>t :TagbarToggle<CR>
