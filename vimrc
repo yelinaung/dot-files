@@ -339,3 +339,4 @@ if &term =~ '256color'
 endif
 
 nmap <leader>t :TagbarToggle<CR>
+set background=dark
