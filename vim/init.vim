@@ -1,0 +1,1 @@
+/home/yelinaung/work/tools/dot-files/nvim_init
