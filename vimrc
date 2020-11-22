@@ -23,14 +23,17 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 "
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'neovimhaskell/haskell-vim'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 " Plugin 'itchyny/lightline.vim'
 " Plugin 'rust-lang/rust.vim'
 " Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
-"Plug 'w0rp/ale' " lint engine
+Plug 'w0rp/ale' " lint engine
 Plug 'dense-analysis/ale'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'Valloric/YouCompleteMe'
@@ -205,7 +208,7 @@ map q: :q
 
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
-nmap <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>e :NERDTreeToggle<CR>
 
 set shortmess=a
 " set cmdheight=2
@@ -340,3 +343,12 @@ endif
 
 nmap <leader>t :TagbarToggle<CR>
 set background=dark
+
+map <C-n> :NERDTreeToggle<CR>
+
+nmap <leader>t :TagbarToggle<CR>
+
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']

@@ -1,1 +1,3 @@
-/home/yelinaung/work/tools/dot-files/nvim_init
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath=&runtimepath
+source ~/.vimrc
