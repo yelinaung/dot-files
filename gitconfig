@@ -6,7 +6,7 @@
 [hub]
     protocol = https
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    ; pager = diff-so-fancy | less --tabs=4 -RFX
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 	editor = nvim
     autocrlf = false
@@ -23,17 +23,36 @@
     autosquash = true
 [merge]
     summary = true
+	ff = false
 [alias]
     hist = log --graph --pretty=format:'%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=short
     reset-one = reset HEAD~1
-[diff]
-    tool = icdiff
-[difftool]
-    prompt = false
-[difftool "icdiff"]
-    cmd = /home/yelinaung/work/tools/icdiff/icdiff --line-numbers $LOCAL $REMOTE
+
+[pager]
+    diff = delta
+    log = delta
+    reflog = delta
+    show = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    navigate = true
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+
+[interactive]
+    diffFilter = delta --color-only
 [color]
-    diff = auto
     status = auto
     branch = auto
     interactive = auto
@@ -43,21 +62,6 @@
     current = yellow reverse
     local   = yellow
     remote  = green
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	old = red bold
-	new = green bold
-	commit = yellow bold
-	whitespace = red reverse
-    added = yellow
-    changed = green
-    untracked = blue
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
 [help]
 	autocorrect = 1
     meta = blue
