@@ -27,24 +27,19 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
-" Plugin 'itchyny/lightline.vim'
-" Plugin 'rust-lang/rust.vim'
-" Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
 Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
 Plug 'w0rp/ale' " lint engine
 Plug 'dense-analysis/ale'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'python-mode/python-mode'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/syntastic'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-" Plug 'udalov/kotlin-vim', {'for': 'kotlin'}
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'davidhalter/jedi-vim',
@@ -52,35 +47,24 @@ Plug 'mindriot101/vim-yapf', {'for': 'python'}
 Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
-" Plug 'fisadev/vim-isort', {'for': 'python'}
+Plug 'fisadev/vim-isort', {'for': 'python'}
 Plug 'easymotion/vim-easymotion'
 Plug 'blueyed/vim-diminactive'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/nerdcommenter'
-" Plug 'maksimr/vim-jsbeautify', {'for': 'javascript'}
 Plug 'digitaltoad/vim-pug',
 Plug 'Yggdroot/indentLine'
 Plug 'digitalrounin/vim-yaml-folds'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
-Plug 'jremmen/vim-ripgrep'
 Plug 'pelodelfuego/vim-swoop'
 Plug 'vim-syntastic/syntastic'
 Plug 'wakatime/vim-wakatime'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
 
-" Use release branch
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Or latest tag
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-" Or build from source code by use yarn: https://yarnpkg.com
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'ambv/black'
+Plug 'ambv/black'
 
-" Plug 'pangloss/vim-javascript'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:python_highlight_all = 1
