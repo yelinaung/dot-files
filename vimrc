@@ -65,6 +65,12 @@ Plug 'flazz/vim-colorschemes'
 
 Plug 'ambv/black'
 
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Or build from source code by using yarn: https://yarnpkg.com
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+
 call plug#end()
 
 let g:python_highlight_all = 1
@@ -334,5 +340,10 @@ nmap <leader>t :TagbarToggle<CR>
 
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+
+nnoremap <leader>cl :CocDiagnostics<cr>
+nnoremap <leader>cf :CocFix<cr>
+nnoremap <leader>ch :call CocAction('doHover')<cr>
+nnoremap <leader>b :Black<cr>
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
