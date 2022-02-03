@@ -1,0 +1,23 @@
+{
+    "languageserver": {
+        "sourcery": {
+            "command": "/home/yelinaung/.local/bin/sourcery",
+            "args": [
+                "lsp"
+            ],
+            "filetypes": [
+                "python"
+            ],
+            "initializationOptions": {
+                "token": "user_ObeplwXKyW2A8GwbHsZDNQiqk7t3EV7p9fk33dCsdv9Y41qpWiwYDIPXvPY",
+                "extension_version": "coc.vim",
+                "editor_version": "vim"
+            },
+            "settings": {
+                "sourcery": {
+                    "metricsEnabled": true
+                }
+            }
+        }
+    }
+}
