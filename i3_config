@@ -8,18 +8,20 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-
-set $mod Mod4
+#  Alt key Mod1
+#  Win key Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 8
-font pango: Fira Code Retina 9
+# font pango: JetBrains Mono 10
+font pango: JetBrains Mono 10
 
 # start dmenu (a program launcher)
 # bindsym $super+Shift+d exec 
 # bindsym $mod+x exec rofi -modi drun -show drun 
-bindsym $mod+d exec rofi -modi drun -lines 14 -padding 20 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Fira Code Retina 20'
+bindsym $mod+o exec rofi -modi drun -lines 14 -padding 20 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Inter 12'
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -49,10 +51,10 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
+bindsym $mod+j focus up
 bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+l focus right
+bindsym $mod+h focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -73,7 +75,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+- split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -90,7 +92,7 @@ bindsym $mod+e layout toggle split
 # bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -129,28 +131,30 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+bindsym $mod+Shift+s exec gnome-screenshot -a --interactive
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
+    
+    # essing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # me bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # ck to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -158,14 +162,10 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    #status_command i3blocks
-    tray_output primary
-    status_command i3status | i3-keyboard-layout i3status
-    #position bottom
-    font pango:PowerlineFont 9
+    # from https://github.com/Tazeg/i3status
+    status_command exec /home/yelinaung/.config/i3status/mybar.sh
     colors {
-        statusline #2f343f
-        separator #4b5262
+        separator #000000
 
         ## colour of border, background, and text
         focused_workspace       #2f343f #bf616a #d8dee8
@@ -173,13 +173,12 @@ bar {
         inactive_workspace      #2f343f #2f343f #d8dee8
         urgent_workspacei       #2f343f #ebcb8b #2f343f
     }
-    height 45
-
+    height 25
 }
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5  #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5 #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Media player controls
@@ -190,22 +189,24 @@ bindsym XF86AudioStop exec mpc stop
 
 for_window [class="^.*"] border pixel 0
 smart_borders on
-gaps inner 10
-gaps outer 10
-
-#
-#
-#
+gaps inner 8
+gaps outer 8
 
 # autostart apps
+exec --no-startup-id eval "$(ssh-agent -s)"
 exec --no-startup-id ssh-add -k
 exec --no-startup-id ibus-daemon --xim -d -r
 exec --no-startup-id rescuetime
+exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id xinput disable $(xinput --list | grep "Touchscreen" | awk '{print $5}' | cut -f2 -d=)
-exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/firefox'
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/brave-browser'
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/slack'
 exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/alacritty'
-exec --no-startup-id feh --bg-center /home/yelinaung/Downloads/daniel-leone-g30P1zcOzXo-unsplash.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/tower.jpg
 exec --no-startup-id i3-keyboard-layout set us
+exec --no-startup-id xrandr --output DP-4 --primary
 
+
+bindsym $mod+y resize set 1200 px 800 px, move position center
 bindsym $mod+shift+space exec i3-keyboard-layout cycle us mm
+bindsym $mod+Shift+f floating toggle
