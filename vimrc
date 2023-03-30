@@ -23,7 +23,6 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 "
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'neovimhaskell/haskell-vim'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
@@ -43,7 +42,6 @@ Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
 Plug 'davidhalter/jedi-vim',
-Plug 'mindriot101/vim-yapf', {'for': 'python'}
 Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'Konfekt/FastFold'
 Plug 'tmhedberg/SimpylFold'
@@ -62,7 +60,6 @@ Plug 'vim-syntastic/syntastic'
 Plug 'wakatime/vim-wakatime'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
-
 Plug 'ambv/black'
 
 " Use release branch (recommend)
