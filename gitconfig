@@ -11,7 +11,7 @@
 	editor = nvim
     autocrlf = false
     safecrlf = false
-    excludesfile = /home/yelin/.gitignore_global
+    excludesfile = /home/yelinaung/.gitignore_global
 [advice]
     statusHints = false
 [web]
@@ -27,6 +27,7 @@
 [alias]
     hist = log --graph --pretty=format:'%C(magenta)%h%Creset -%C(red)%d%Creset %s %C(dim green)(%cr) %C(cyan)<%an>%Creset' --abbrev-commit --date=short
     reset-one = reset HEAD~1
+	clone-branches = "! git branch -a | sed -n \"/\\/HEAD /d; /\\/master$/d; /remotes/p;\" | xargs -L1 git checkout -t"
 
 [pager]
     diff = delta
@@ -72,3 +73,12 @@
     added = yellow
     changed = green
     untracked = blue
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/

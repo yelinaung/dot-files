@@ -23,20 +23,27 @@ call plug#begin('~/.vim/plugged')
 " Make sure you use single quotes
 "
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'tpope/vim-rails'
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
+" Plug 'sidebar-nvim/sidebar.nvim'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go'}
-Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
+" Plug 'ctrlpvim/ctrlp.vim' " sublime style ctrl p
 Plug 'tmux-plugins/vim-tmux'
 Plug 'w0rp/ale' " lint engine
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-python/python-syntax', {'for': 'python'}
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'scrooloose/syntastic'
 Plug 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
@@ -61,15 +68,17 @@ Plug 'wakatime/vim-wakatime'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
 Plug 'ambv/black'
-
-" Use release branch (recommend)
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Or build from source code by using yarn: https://yarnpkg.com
+Plug 'edgedb/edgedb-vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'mfussenegger/nvim-dap'
+Plug 'wlangstroth/vim-racket'
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
+autocmd FileType python setlocal foldmethod=indent
 let g:python_highlight_all = 1
 
 " need to test yapf
@@ -195,7 +204,10 @@ map q: :q
 
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=[".git", '\.pyc$']
+
 nmap <Leader>e :NERDTreeToggle<CR>
+nmap <Leader>r :NERDTreeFind<cr>
 
 set shortmess=a
 " set cmdheight=2
@@ -250,7 +262,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType jsx setlocal ts=4 sts=4 sw=4 expandtab
 autocmd FileType js setlocal ts=4 sts=4 sw=4 expandtab
 
-let NERDTreeIgnore = ['\.pyc$']
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " nmap s <Plug>(easymotion-overwin-f)
@@ -339,8 +350,24 @@ cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 
 nnoremap <leader>cl :CocDiagnostics<cr>
-nnoremap <leader>cf :CocFix<cr>
-nnoremap <leader>ch :call CocAction('doHover')<cr>
+nnoremap <leader>cf <Plug>(coc-fix-current)
+nnoremap <leader>ch :call CocActionAsync('doHover')<cr>
 nnoremap <leader>b :Black<cr>
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Find files using Telescope command-line sugar.
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>pp <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Switching between the terminal and normal buffer
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
+
+let g:coc_node_path = trim(system('which node'))
+let g:syntastic_enable_racket_racket_checker = 1
+call deoplete#custom#option('auto_complete_delay', 100)
