@@ -1,0 +1,10 @@
+#!/bin/bash
+
+### Sek (short form of Sekret) : A utility to decrypt the Kubernetes SecretMap
+# Usage: sek "secret map name"
+### 
+SECRET=$1
+if [ $# -eq 0 ]; then
+    echo " Usage: sek 'secret map name'"
+fi
+jq ".data | map_values(@base64d)" <<< "$(kubectl get secrets "$SECRET" -o json)"
